@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemas</title>
+</head>
+<body>
+<div th:switch="${cinemas}">
+    <h2 th:case="null">No cinemas found!</h2>
+    <div th:case="*">
+        <h2>Cinemas</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cinema name</th>
+                <th>Cinema address</th>
+                <th>Cinema phone number</th>
+                <th>Cinema description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cinema : ${cinemas}">
+                <td th:text="${cinema.cinemaId}"></td>
+                <td th:text="${cinema.cinemaName}"></td>
+                <td th:text="${cinema.cinemaAddress}"></td>
+                <td th:text="${cinema.cinemaPhoneNumber}"></td>
+                <td th:text="${cinema.cinemaDescription}"></td>
+                <td><a th:href="@{cinema-update/{id}(id=${cinema.cinemaId})}">Edit</a></td>
+                <td><a th:href="@{cinema-delete/{id}(id=${cinema.cinemaId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/cinema-create">Create cinema</a></p>
+</div>
+</body>
+</html>

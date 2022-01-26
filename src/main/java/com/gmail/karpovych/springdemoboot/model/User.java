@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Objects;
 
 @Getter
@@ -11,21 +12,35 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "user", schema = "kino_cms")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //it was name = "first_name
-    @Column(name = "first_name")
+    @Column(name = "user_name")
     private String firstName;
-    //it was name = "last_name
-    @Column(name = "last_name")
+    @Column(name = "user_surname")
     private String lastName;
     @Column(name = "user_alias")
     private String userAlias;
     @Column(name = "user_email")
     private String userEmail;
+    @Column(name = "user_address")
+    private String userAddress;
+    @Column(name = "user_password")
+    private String userPassword;
+    @Column(name = "user_card_number")
+    private String userCardNumber;
+    @Column(name = "user_language")
+    private String userLanguage;
+    @Column(name = "user_sex")
+    private String userSex;
+    @Column(name = "user_phone_number")
+    private String userPhoneNumber;
+    @Column(name = "user_city")
+    private String userCity;
+    @Column(name = "user_birthday")
+    private Date userBirthday;
 
     @Override
     public boolean equals(Object o) {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Alias</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Password</th>
+                <th>Card number</th>
+                <th>Language</th>
+                <th>Sex</th>
+                <th>Phone number</th>
+                <th>City</th>
+                <th>Birthday</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.userAlias}"></td>
+                <td th:text="${user.userEmail}"></td>
+                <td th:text="${user.userAddress}"></td>
+                <td th:text="${user.userPassword}"></td>
+                <td th:text="${user.userCardNumber}"></td>
+                <td th:text="${user.userLanguage}"></td>
+                <td th:text="${user.userSex}"></td>
+                <td th:text="${user.userPhoneNumber}"></td>
+                <td th:text="${user.userCity}"></td>
+                <td th:text="${user.userBirthday}"></td>
+                <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/user-create">Create user</a></p>
+</div>
+</body>
+</html>
