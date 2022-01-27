@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Promotions</title>
+</head>
+<body>
+<div th:switch="${promotions}">
+    <h2 th:case="null">No promotions found!</h2>
+    <div th:case="*">
+        <h2>Promotions</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Promotions ID</th>
+                <th>Cinema ID</th>
+                <th>Promotions name</th>
+                <th>Promotions description</th>
+                <th>Promotions date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="promotion : ${promotions}">
+                <td th:text="${promotion.promotionsId}"></td>
+                <td th:text="${promotion.cinemaId}"></td>
+                <td th:text="${promotion.promotionsName}"></td>
+                <td th:text="${promotion.promotionsDescription}"></td>
+                <td th:text="${promotion.promotionsDate}"></td>
+                <td><a th:href="@{promotions-update/{id}(id=${promotion.promotionsId})}">Edit</a></td>
+                <td><a th:href="@{promotions-delete/{id}(id=${promotion.promotionsId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/promotions-create">Create promotions</a></p>
+</div>
+</body>
+</html>
